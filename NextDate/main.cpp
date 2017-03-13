@@ -29,7 +29,7 @@ TEST( NextDateEquivalenceClassTest, WeakRobust){
     EXPECT_STREQ("Invalid date", NextDate(1962,13,15));
     EXPECT_STREQ("Invalid date", NextDate(1962,6,-1));
     EXPECT_STREQ("Invalid date", NextDate(1962,6,32));
-    EXPECT_STREQ("Invalid date", NextDate(1989,6,15));
+    EXPECT_STREQ("Invalid date", NextDate(1899,6,15));
     EXPECT_STREQ("Invalid date", NextDate(2026,6,15));
 }
 TEST( NextDateEquivalenceClassTest, StrongNormal){

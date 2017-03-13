@@ -1,2 +1,2 @@
 using namespace std;
-char* triangle( float , float , float);
+const char* triangle( float , float , float);

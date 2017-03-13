@@ -1,7 +1,7 @@
 #include "triangle.h"
 using namespace std;
 
-char* triangle( float a, float b, float c){
+const char* triangle( float a, float b, float c){
     bool IsTriangle;
     if( a > 200 || b > 200 || c > 200)
         return "Exceed upper bound";
