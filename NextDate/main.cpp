@@ -81,4 +81,27 @@ TEST( NextDateEquivalenceClassTest, StrongRobust){
 }
 
 //TEST( NextDateEdgeTest, ){}
-//TEST( NextDateDecisionTableTest,){}
+TEST( NextDateDecisionTableTest,){
+    EXPECT_STREQ( "2001/4/16", NextDate( 2001, 4, 15));
+    EXPECT_STREQ( "2001/4/29", NextDate( 2001, 4, 28));
+    EXPECT_STREQ( "2001/4/30", NextDate( 2001, 4, 29));
+    EXPECT_STREQ( "2001/5/1", NextDate( 2001, 4, 30));
+    EXPECT_STREQ( "Invalid date", NextDate( 2001, 4, 31));
+    EXPECT_STREQ( "2001/1/16", NextDate( 2001, 1, 15));
+    EXPECT_STREQ( "2001/1/29", NextDate( 2001, 1, 28));
+    EXPECT_STREQ( "2001/1/30", NextDate( 2001, 1, 29));
+    EXPECT_STREQ( "2001/1/31", NextDate( 2001, 1, 30));
+    EXPECT_STREQ( "2001/2/1", NextDate( 2001, 1, 31));
+    EXPECT_STREQ( "2001/12/16", NextDate( 2001, 12, 15));
+    EXPECT_STREQ( "2001/12/29", NextDate( 2001, 12, 28));
+    EXPECT_STREQ( "2001/12/30", NextDate( 2001, 12, 29));
+    EXPECT_STREQ( "2001/12/31", NextDate( 2001, 12, 30));
+    EXPECT_STREQ( "2002/1/1", NextDate( 2001, 12, 31));
+    EXPECT_STREQ( "2001/2/16", NextDate( 2001, 2, 15));
+    EXPECT_STREQ( "2004/2/29", NextDate( 2004, 2, 28));
+    EXPECT_STREQ( "2001/3/1", NextDate( 2001, 2, 28));
+    EXPECT_STREQ( "2004/3/1", NextDate( 2004, 2, 29));
+    EXPECT_STREQ( "Invalid date", NextDate( 2001, 2, 29));
+    EXPECT_STREQ( "Invalid date", NextDate( 2001, 2, 30));
+    EXPECT_STREQ( "Invalid date", NextDate( 2001, 2, 31));
+}
