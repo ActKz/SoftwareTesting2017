@@ -110,6 +110,79 @@ TestCase ect_SN[] = {
     TestCase(1996,2 ,31,"Invalid date"),
     TestCase(2002,2 ,31,"Invalid date"),
 };
+TestCase edg_SR[] = {
+    TestCase(1899,1 ,1 ,"Out of range value"),
+    TestCase(1900,0 ,1 ,"Out of range value"),
+    TestCase(1900,1 ,0 ,"Out of range value"),
+    TestCase(1899,0 ,1 ,"Out of range value"),
+    TestCase(1899,1 ,0 ,"Out of range value"),
+    TestCase(1900,0 ,0 ,"Out of range value"),
+    TestCase(1899,0 ,0 ,"Out of range value"),
+    TestCase(1900,1 ,1 ,"1900/1/2"),
+    TestCase(1901,1 ,1 ,"1901/1/2"),
+    TestCase(2024,1 ,1 ,"2024/1/2"),
+    TestCase(2025,1 ,1 ,"2025/1/2"),
+    TestCase(1900,2 ,1 ,"1900/2/2"),
+    TestCase(1901,2 ,1 ,"1901/2/2"),
+    TestCase(2024,2 ,1 ,"2024/2/2"),
+    TestCase(2025,2 ,1 ,"2025/2/2"),
+    TestCase(1900,11,1 ,"1900/11/2"),
+    TestCase(1901,11,1 ,"1901/11/2"),
+    TestCase(2024,11,1 ,"2024/11/2"),
+    TestCase(2025,11,1 ,"2025/11/2"),
+    TestCase(1900,12,1 ,"1900/12/2"),
+    TestCase(1901,12,1 ,"1901/12/2"),
+    TestCase(2024,12,1 ,"2024/12/2"),
+    TestCase(2025,12,1 ,"2025/12/2"),
+    TestCase(1900,1 ,2 ,"1900/1/3"),
+    TestCase(1901,1 ,2 ,"1901/1/3"),
+    TestCase(2024,1 ,2 ,"2024/1/3"),
+    TestCase(2025,1 ,2 ,"2025/1/3"),
+    TestCase(1900,2 ,2 ,"1900/2/3"),
+    TestCase(1901,2 ,2 ,"1901/2/3"),
+    TestCase(2024,2 ,2 ,"2024/2/3"),
+    TestCase(2025,2 ,2 ,"2025/2/3"),
+    TestCase(1900,11,2 ,"1900/11/3"),
+    TestCase(1901,11,2 ,"1901/11/3"),
+    TestCase(2024,11,2 ,"2024/11/3"),
+    TestCase(2025,11,2 ,"2025/11/3"),
+    TestCase(1900,12,2 ,"1900/12/3"),
+    TestCase(1901,12,2 ,"1901/12/3"),
+    TestCase(2024,12,2 ,"2024/12/3"),
+    TestCase(2025,12,2 ,"2025/12/3"),
+    TestCase(1900,1 ,30,"1900/1/31"),
+    TestCase(1901,1 ,30,"1901/1/31"),
+    TestCase(2024,1 ,30,"2024/1/31"),
+    TestCase(2025,1 ,30,"2025/1/31"),
+    TestCase(1900,2 ,30,"Invalid date"),
+    TestCase(1901,2 ,30,"Invalid date"),
+    TestCase(2024,2 ,30,"Invalid date"),
+    TestCase(2025,2 ,30,"Invalid date"),
+    TestCase(1900,11,30,"1900/12/1"),
+    TestCase(1901,11,30,"1901/12/1"),
+    TestCase(2024,11,30,"2024/12/1"),
+    TestCase(2025,11,30,"2025/12/1"),
+    TestCase(1900,12,30,"1900/12/31"),
+    TestCase(1901,12,30,"1901/12/31"),
+    TestCase(2024,12,30,"2024/12/31"),
+    TestCase(2025,12,30,"2025/12/31"),
+    TestCase(1900,1 ,31,"1900/2/1"),
+    TestCase(1901,1 ,31,"1901/2/1"),
+    TestCase(2024,1 ,31,"2024/2/1"),
+    TestCase(2025,1 ,31,"2025/2/1"),
+    TestCase(1900,2 ,31,"Invalid date"),
+    TestCase(1901,2 ,31,"Invalid date"),
+    TestCase(2024,2 ,31,"Invalid date"),
+    TestCase(2025,2 ,31,"Invalid date"),
+    TestCase(1900,11,31,"Invalid date"),
+    TestCase(1901,11,31,"Invalid date"),
+    TestCase(2024,11,31,"Invalid date"),
+    TestCase(2025,11,31,"Invalid date"),
+    TestCase(1900,12,31,"1901/1/1"),
+    TestCase(1901,12,31,"1902/1/1"),
+    TestCase(2024,12,31,"2025/1/1"),
+    TestCase(2025,12,31,"2026/1/1"),
+};
 TestCase dtt[] = {
     TestCase(2001,4 ,15,"2001/4/16"),
     TestCase(2001,4 ,28,"2001/4/29"),
@@ -158,6 +231,12 @@ TEST( NextDate, EquivalenceClassTest){
     size = sizeof(ect_SN)/sizeof(TestCase);
     for(int i = 0; i < size; i++){
         EXPECT_EQ(NextDate(ect_SN[i].year, ect_SN[i].month, ect_SN[i].day), ect_SN[i].output );
+    }
+}
+TEST( NextDate, EdgeTest){
+    int size = sizeof(edg_SR)/sizeof(TestCase);
+    for(int i = 0; i < size; i++){
+        EXPECT_EQ(NextDate(edg_SR[i].year, edg_SR[i].month, edg_SR[i].day), edg_SR[i].output );
     }
 }
 TEST( NextDate, DecisionTableTest){
