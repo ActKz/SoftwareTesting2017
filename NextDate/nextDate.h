@@ -1,1 +1,3 @@
-const char* NextDate(int,int,int);
+#include <string>
+using namespace std;
+string NextDate(int,int,int);
