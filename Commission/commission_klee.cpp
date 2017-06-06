@@ -21,5 +21,6 @@ int main(){
     klee_make_symbolic(&lock, sizeof(lock), "lock");
     klee_make_symbolic(&stock, sizeof(stock), "stock");
     klee_make_symbolic(&barrel, sizeof(barrel), "barrel");
-    cout << commission(lock, stock, barrel) << endl;
+    printf("%s\n",commission(lock, stock, barrel).data());
+    return 0;
 }
