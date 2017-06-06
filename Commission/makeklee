@@ -1,0 +1,13 @@
+CXX=clang++
+CXXFLAGS1= -std=c++11 -I /home/klee/klee_src/include/ -emit-llvm -c -g
+CXXFLAGS2= -std=c++11 -I /home/klee/klee_src/include/ -L /home/klee/klee_build/klee/lib/
+EXPORT_LD_LIB= export LD_LIBRARY_PATH=/home/klee/klee_build/klee/lib/:$LD_LIBRARY_PATH
+
+all: commission_klee.bc
+	klee commission_klee.bc && $(EXPORT_LD_LIB) && $(CXX) $(CXXFLAGS2) commission_klee.cpp -lkleeRuntest
+
+commission_klee.bc:
+	$(CXX) $(CXXFLAGS1) commission_klee.cpp
+
+clean:
+	rm -rf klee-* commission_klee.bc a.out
