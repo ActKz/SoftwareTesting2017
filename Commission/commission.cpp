@@ -1,4 +1,5 @@
 #include <string>
+#include "commission.h"
 using namespace std;
 string commission(int locks, int stocks, int barrels){
     if( locks < 1 || locks > 70
