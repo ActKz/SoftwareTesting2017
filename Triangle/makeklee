@@ -1,0 +1,12 @@
+CXX=clang++
+CXXFLAGS1= -std=c++11 -I /home/klee/klee_src/include/ -emit-llvm -c -g
+CXXFLAGS2= -std=c++11 -I /home/klee/klee_src/include/ -L /home/klee/klee_build/klee/lib/
+
+all: triangle_klee.bc
+	klee --libc=uclibc -allow-external-sym-calls triangle_klee.bc && $(CXX) $(CXXFLAGS2) triangle_klee.cpp -lkleeRuntest
+
+triangle_klee.bc:
+	$(CXX) $(CXXFLAGS1) triangle_klee.cpp
+
+clean:
+	rm -rf klee-* triangle_klee.bc a.out
