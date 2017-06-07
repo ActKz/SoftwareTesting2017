@@ -1,0 +1,11 @@
+CXX=afl-g++
+CXXFLAG= -std=c++11
+
+all: afl.out
+	afl-fuzz -i afl_in -o out ./afl.out
+
+afl.out:
+	$(CXX) $(CXXFLAG) commission_afl.cpp -o afl.out
+
+clean:
+	rm -rf out afl.out
