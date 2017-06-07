@@ -1,12 +1,12 @@
-CXX=clang++
-CXXFLAGS1= -std=c++11 -I /home/klee/klee_src/include/ -emit-llvm -c -g
-CXXFLAGS2= -std=c++11 -I /home/klee/klee_src/include/ -L /home/klee/klee_build/klee/lib/
+CXX=clang
+CXXFLAGS1= -I /home/klee/klee_src/include/ -emit-llvm -c -g
+CXXFLAGS2= -I /home/klee/klee_src/include/ -L /home/klee/klee_build/klee/lib/
 
 all: nextdate_klee.bc
-	klee --libc=uclibc nextdate_klee.bc && $(CXX) $(CXXFLAGS2) nextdate_klee.cpp -lkleeRuntest
+	klee --libc=uclibc -allow-external-sym-calls nextdate_klee.bc && $(CXX) $(CXXFLAGS2) nextdate_klee.c -lkleeRuntest
 
 nextdate_klee.bc:
-	$(CXX) $(CXXFLAGS1) nextdate_klee.cpp
+	$(CXX) $(CXXFLAGS1) nextdate_klee.c
 
 clean:
 	rm -rf klee-* nextdate_klee.bc a.out
